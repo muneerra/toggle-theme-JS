@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Toggle theme</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li id="heading">whatthefork.<span id="subHeading">closure</span></li>
+                <li id="icon">
+                    <span class="switchIcon">
+                        <button onclick="night()" class="night"><i class="far fa-moon"></i> 
+                            Night Mode
+                        </button>
+                        <button onclick="day()" class="day"><i class="fas fa-sun"></i>   
+                            Day Mode
+                        </button>
+                    </span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p>
+            Closures are confusing because they are an “invisible” concept.
+
+            When you use an object, a variable, or a function, you do this intentionally. You think: “I’m gonna need a
+            variable here,” and add it to your code.
+
+            Closures are different. By the time most people approach closures, they have already used them unknowingly
+            many times — and it is likely that this is true for yourself, too. So learning closures is less about
+            understanding a new concept and more about recognizing something you have already been doing for a while.
+
+            <h3>tl;dr</h3>
+            You have a closure when a function accesses variables defined outside of it.
+
+            For example, this code snippet contains a closure:
+            <span class="codeBlock">
+                let users = ['Alice', 'Dan', 'Jessica'];
+                let query = 'A';
+                let user = users.filter(user => user.startsWith(query));
+            </span>
+            Notice how user => user.startsWith(query) is itself a function. It uses the query variable. But the query
+            variable is defined outside of that function. That’s a closure.
+            You can stop reading here, if you want. The rest of this article approaches closures in a different way.
+            Instead of explaining what a closure is, it will walk you through the process of discovering closures — like
+            the first programmers did in the 1960s.
+
+        </p>
+        <p>
+            <h3>Step 1: Functions Can Access Outside Variables</h3>
+            To understand closures, we need to be somewhat familiar with variables and functions. In this example, we
+            declare the food variable inside the eat function:
+            <span class="codeBlock">
+                function eat() {
+                let food = 'cheese';
+                console.log(food + ' is good');
+                }
+                eat(); // Logs 'cheese is good'
+            </span>
+        </p>
+        <p>
+            Using a function gives us the ultimate flexibility because we can run this function any number of times, at
+            any time — and from anywhere in our program.
+
+            In fact, we can even call our new function only once, if we wanted to:
+            <span class="codeBlock">
+                function doTheThing() {
+                /* A snippet of code */
+                }
+                doTheThing();
+            </span>
+        </p>
+        <p>
+            <h3>Step 2: Discovering Closures</h3>
+            We have traced our way through two different ideas:
+
+            Functions can access variables defined outside of them.
+            Wrapping code in a function and calling it once doesn’t change the result.
+            Now let’s see what happens if we combine them.
+
+            We’ll take our code example from the first step:
+            <span class="codeBlock">
+                let food = 'cheese';
+                function eat() {
+                console.log(food + ' is good');
+                }
+                eat();
+            </span>
+        </p>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
